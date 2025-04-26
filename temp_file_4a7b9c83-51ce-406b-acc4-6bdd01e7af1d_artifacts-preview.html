@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州西湖旅行需求问卷</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0078d7;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0078d7;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        button {
+            background-color: #0078d7;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .weather-info {
+            background-color: #e8f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .success-message {
+            display: none;
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <h1>杭州西湖五一双人游需求问卷</h1>
+            <div class="weather-info">
+                <h3>杭州最近天气预报</h3>
+                <p>4月24日(周四): 白天多云 24°C，夜间小雨 15°C</p>
+                <p>4月25日(周五): 白天多云 22°C，夜间多云 12°C</p>
+                <p>4月26日(周六): 白天多云 26°C，夜间小雨 16°C</p>
+                <p>4月27日(周日): 白天小雨 23°C，夜间小雨 16°C</p>
+                <p>建议出行时携带雨具，注意天气变化</p>
+            </div>
+        </div>
+        <form id="travelForm">
+            <h2>基本信息</h2>
+            <div class="question">
+                <p>1. 您计划的具体旅行日期是？</p>
+                <label><input type="radio" name="travel_dates" value="5月1日-5月3日(3天)"> 5月1日-5月3日(3天)</label>
+                <label><input type="radio" name="travel_dates" value="5月1日-5月4日(4天)"> 5月1日-5月4日(4天)</label>
+                <label><input type="radio" name="travel_dates" value="5月1日-5月5日(5天)"> 5月1日-5月5日(5天)</label>
+                <label>其他: <input type="text" name="travel_dates_other"></label>
+            </div>
+
+            <div class="question">
+                <p>2. 您们的年龄段是？</p>
+                <label><input type="radio" name="age_range" value="20-30岁"> 20-30岁</label>
+                <label><input type="radio" name="age_range" value="31-40岁"> 31-40岁</label>
+                <label><input type="radio" name="age_range" value="41-50岁"> 41-50岁</label>
+                <label><input type="radio" name="age_range" value="51-60岁"> 51-60岁</label>
+                <label><input type="radio" name="age_range" value="60岁以上"> 60岁以上</label>
+            </div>
+
+            <h2>旅行偏好</h2>
+            <div class="question">
+                <p>3. 您对西湖景点的兴趣偏好是？（可多选）</p>
+                <label><input type="checkbox" name="interests" value="历史文化景点"> 历史文化景点（如雷峰塔、岳王庙）</label>
+                <label><input type="checkbox" name="interests" value="自然风景"> 自然风景（如断桥、三潭印月）</label>
+                <label><input type="checkbox" name="interests" value="园林景观"> 园林景观（如花港观鱼、曲院风荷）</label>
+                <label><input type="checkbox" name="interests" value="博物馆"> 博物馆（如中国茶叶博物馆）</label>
+                <label><input type="checkbox" name="interests" value="休闲娱乐"> 休闲娱乐（如游船、骑行）</label>
+            </div>
+
+            <div class="question">
+                <p>4. 您的行程节奏偏好是？</p>
+                <label><input type="radio" name="pace" value="轻松休闲"> 轻松休闲型（每天少景点，深度体验）</label>
+                <label><input type="radio" name="pace" value="中等节奏"> 中等节奏（平衡景点数量和体验质量）</label>
+                <label><input type="radio" name="pace" value="高效紧凑"> 高效紧凑型（尽可能游览更多景点）</label>
+            </div>
+
+            <div class="question">
+                <p>5. 您计划如何游览西湖？（可多选）</p>
+                <label><input type="checkbox" name="transport" value="步行"> 步行</label>
+                <label><input type="checkbox" name="transport" value="公共交通"> 公共交通</label>
+                <label><input type="checkbox" name="transport" value="游船"> 游船</label>
+                <label><input type="checkbox" name="transport" value="自行车"> 自行车租赁</label>
+                <label><input type="checkbox" name="transport" value="观光车"> 观光车</label>
+                <label><input type="checkbox" name="transport" value="出租车"> 出租车/网约车</label>
+            </div>
+
+            <h2>住宿与餐饮</h2>
+            <div class="question">
+                <p>6. 您的住宿预算是？（每晚）</p>
+                <label><input type="radio" name="accommodation_budget" value="300-500元"> 300-500元</label>
+                <label><input type="radio" name="accommodation_budget" value="500-800元"> 500-800元</label>
+                <label><input type="radio" name="accommodation_budget" value="800-1200元"> 800-1200元</label>
+                <label><input type="radio" name="accommodation_budget" value="1200元以上"> 1200元以上</label>
+            </div>
+
+            <div class="question">
+                <p>7. 您对住宿位置的偏好是？</p>
+                <label><input type="radio" name="accommodation_location" value="西湖景区附近"> 西湖景区附近（便于游玩）</label>
+                <label><input type="radio" name="accommodation_location" value="市中心商业区"> 市中心商业区（如武林广场附近）</label>
+                <label><input type="radio" name="accommodation_location" value="地铁沿线"> 地铁沿线（便于出行）</label>
+                <label><input type="radio" name="accommodation_location" value="特色民宿区"> 特色民宿区（如青芝坞、上满觉陇）</label>
+            </div>
+
+            <div class="question">
+                <p>8. 您的餐饮偏好是？（可多选）</p>
+                <label><input type="checkbox" name="food_preferences" value="杭帮菜"> 杭帮菜（如西湖醋鱼、龙井虾仁）</label>
+                <label><input type="checkbox" name="food_preferences" value="特色小吃"> 特色小吃（如葱包桧、知味观糕点）</label>
+                <label><input type="checkbox" name="food_preferences" value="精致餐厅"> 精致餐厅（有特色环境）</label>
+                <label><input type="checkbox" name="food_preferences" value="平价美食"> 平价美食（性价比高）</label>
+                <label><input type="checkbox" name="food_preferences" value="网红打卡"> 网红打卡店</label>
+            </div>
+
+            <div class="question">
+                <p>9. 您的单人餐饮预算是？（每餐平均）</p>
+                <label><input type="radio" name="food_budget" value="50-100元"> 50-100元</label>
+                <label><input type="radio" name="food_budget" value="100-200元"> 100-200元</label>
+                <label><input type="radio" name="food_budget" value="200-300元"> 200-300元</label>
+                <label><input type="radio" name="food_budget" value="300元以上"> 300元以上</label>
+            </div>
+
+            <h2>特别需求</h2>
+            <div class="question">
+                <p>10. 您有任何特别的活动需求吗？（可多选）</p>
+                <label><input type="checkbox" name="special_activities" value="看西湖表演"> 看西湖表演（如印象西湖）</label>
+                <label><input type="checkbox" name="special_activities" value="茶文化体验"> 茶文化体验（如品龙井、参观茶园）</label>
+                <label><input type="checkbox" name="special_activities" value="拍照打卡"> 拍照打卡（网红景点）</label>
+                <label><input type="checkbox" name="special_activities" value="夜游西湖"> 夜游西湖</label>
+                <label><input type="checkbox" name="special_activities" value="购物"> 购物（丝绸、茶叶、纪念品）</label>
+                <label>其他: <input type="text" name="special_activities_other"></label>
+            </div>
+
+            <div class="question">
+                <p>11. 您有任何健康或行动限制需要考虑吗？</p>
+                <label><input type="radio" name="health_limitations" value="没有限制"> 没有限制，可以长时间步行和爬山</label>
+                <label><input type="radio" name="health_limitations" value="适中步行"> 适中步行，偶尔需要休息</label>
+                <label><input type="radio" name="health_limitations" value="需要考虑"> 需要考虑行动便利，避免长途步行</label>
+                <label><input type="radio" name="health_limitations" value="其他"> 其他特殊需求</label>
+            </div>
+
+            <div class="question">
+                <p>12. 您有任何其他特殊要求或备注吗？</p>
+                <textarea name="additional_notes" rows="4" style="width: 100%; padding: 8px;"></textarea>
+            </div>
+        </form>
+
+        <button id="copyButton">提交并复制答案到剪贴板</button>
+        <p id="successMessage" class="success-message">已成功复制到剪贴板！请将内容粘贴发送给我</p>
+
+        <script>
+            document.getElementById('copyButton').addEventListener('click', function() {
+                let formData = {};
+                const form = document.getElementById('travelForm');
+                const elements = form.elements;
+                
+                for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    if (element.name) {
+                        if (element.type === 'radio' && element.checked) {
+                            formData[element.name] = element.value;
+                        } else if (element.type === 'checkbox' && element.checked) {
+                            if (!formData[element.name]) {
+                                formData[element.name] = [];
+                            }
+                            formData[element.name].push(element.value);
+                        } else if (element.type === 'text' || element.type === 'textarea') {
+                            if (element.value.trim() !== '') {
+                                formData[element.name] = element.value;
+                            }
+                        }
+                    }
+                }
+                
+                // 将数组转换为字符串
+                for (let key in formData) {
+                    if (Array.isArray(formData[key])) {
+                        formData[key] = formData[key].join(', ');
+                    }
+                }
+                
+                // 格式化为文本
+                let outputText = '【杭州西湖五一双人游问卷答案】\n\n';
+                for (let key in formData) {
+                    let readableKey = key.replace(/_/g, ' ');
+                    outputText += readableKey + ': ' + formData[key] + '\n';
+                }
+                
+                // 复制到剪贴板
+                navigator.clipboard.writeText(outputText)
+                    .then(() => {
+                        document.getElementById('successMessage').style.display = 'block';
+                        setTimeout(() => {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 3000);
+                    })
+                    .catch(err => {
+                        console.error('无法复制文本: ', err);
+                        alert('复制失败，请手动复制问卷答案。');
+                    });
+            });
+        </script>
+    </div>
+</body>
+</html>

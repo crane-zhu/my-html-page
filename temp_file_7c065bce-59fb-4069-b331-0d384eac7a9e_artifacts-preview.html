@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖州旅行需求调查</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 15px;
+        }
+        .container {
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .intro {
+            margin-bottom: 25px;
+            text-align: center;
+            color: #4a5568;
+        }
+        .weather-info {
+            background-color: #ebf8ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .weather-info h3 {
+            color: #2b6cb0;
+            margin-bottom: 8px;
+        }
+        .weather-day {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed #bee3f8;
+        }
+        .weather-day:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 8px;
+            color: #3182ce;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            margin-top: 5px;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .copy-btn {
+            display: block;
+            width: 100%;
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .copy-btn:hover {
+            background-color: #3182ce;
+        }
+        .result-area {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f7fafc;
+            border-radius: 6px;
+            display: none;
+        }
+        .date-range {
+            display: flex;
+            gap: 10px;
+        }
+        .date-range input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>湖州旅行需求调查</h1>
+        <p class="intro">为了给您提供最适合的五一湖州旅行计划，请填写以下信息</p>
+        
+        <div class="weather-info">
+            <h3><i class="fas fa-cloud-sun"></i> 湖州五一期间天气预报</h3>
+            <div class="weather-day">
+                <span>4月26日(周六)：</span>
+                <span>白天多云 25°C，夜间小雨 11°C</span>
+            </div>
+            <div class="weather-day">
+                <span>4月27日(周日)：</span>
+                <span>白天多云 24°C，夜间晴 14°C</span>
+            </div>
+            <div class="weather-day">
+                <span>4月28日(周一)：</span>
+                <span>白天多云 24°C，夜间晴 13°C</span>
+            </div>
+            <div class="weather-day">
+                <span>4月29日(周二)：</span>
+                <span>白天多云 26°C，夜间多云 15°C</span>
+            </div>
+        </div>
+
+        <form id="travelForm">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 基本信息</h2>
+                
+                <div class="question">
+                    <div class="question-text">您计划的旅行日期是？</div>
+                    <div class="date-range">
+                        <input type="date" name="startDate" id="startDate" value="2025-04-26">
+                        <span>至</span>
+                        <input type="date" name="endDate" id="endDate" value="2025-04-29">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">出行人数？</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="people1" name="peopleCount" value="1人">
+                            <label for="people1">1人</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="people2" name="peopleCount" value="2人">
+                            <label for="people2">2人</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="people3" name="peopleCount" value="3-5人">
+                            <label for="people3">3-5人</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="people4" name="peopleCount" value="6人以上">
+                            <label for="people4">6人以上</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">团队成员构成？(多选)</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="memberYoung" name="memberComposition" value="年轻人">
+                            <label for="memberYoung">年轻人</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="memberOld" name="memberComposition" value="老人">
+                            <label for="memberOld">老人</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="memberKid" name="memberComposition" value="儿童">
+                            <label for="memberKid">儿童</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="memberFamily" name="memberComposition" value="家庭">
+                            <label for="memberFamily">家庭</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="memberFriends" name="memberComposition" value="朋友">
+                            <label for="memberFriends">朋友</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="memberCouple" name="memberComposition" value="情侣">
+                            <label for="memberCouple">情侣</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">交通方式？</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="transport1" name="transportation" value="自驾">
+                            <label for="transport1">自驾</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="transport2" name="transportation" value="高铁/火车">
+                            <label for="transport2">高铁/火车</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="transport3" name="transportation" value="长途汽车">
+                            <label for="transport3">长途汽车</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="transport4" name="transportation" value="当地公共交通">
+                            <label for="transport4">当地公共交通</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-plane-departure"></i> 旅行偏好</h2>
+                
+                <div class="question">
+                    <div class="question-text">旅行风格偏好？(多选)</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="styleRelax" name="travelStyle" value="轻松休闲">
+                            <label for="styleRelax">轻松休闲</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="styleIntensive" name="travelStyle" value="紧凑充实">
+                            <label for="styleIntensive">紧凑充实</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="styleDeep" name="travelStyle" value="深度体验">
+                            <label for="styleDeep">深度体验</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="stylePhoto" name="travelStyle" value="拍照打卡">
+                            <label for="stylePhoto">拍照打卡</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">最感兴趣的景点/活动类型？(多选)</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="interestNature" name="interests" value="自然风光">
+                            <label for="interestNature">自然风光</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestCulture" name="interests" value="人文历史">
+                            <label for="interestCulture">人文历史</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestAdventure" name="interests" value="户外探险">
+                            <label for="interestAdventure">户外探险</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestFood" name="interests" value="美食体验">
+                            <label for="interestFood">美食体验</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestShopping" name="interests" value="特色购物">
+                            <label for="interestShopping">特色购物</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestTea" name="interests" value="茶文化体验">
+                            <label for="interestTea">茶文化体验</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="interestWater" name="interests" value="水乡风情">
+                            <label for="interestWater">水乡风情</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">特别想去的湖州景点？(多选)</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="spotMogan" name="specificSpots" value="莫干山">
+                            <label for="spotMogan">莫干山</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotTaihu" name="specificSpots" value="太湖风景区">
+                            <label for="spotTaihu">太湖风景区</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotNanxun" name="specificSpots" value="南浔古镇">
+                            <label for="spotNanxun">南浔古镇</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotDongting" name="specificSpots" value="东林寺">
+                            <label for="spotDongting">东林寺</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotBamboo" name="specificSpots" value="安吉竹海">
+                            <label for="spotBamboo">安吉竹海</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotHello" name="specificSpots" value="Hello Kitty乐园">
+                            <label for="spotHello">Hello Kitty乐园</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotFeiying" name="specificSpots" value="飞英湖景区">
+                            <label for="spotFeiying">飞英湖景区</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="spotHuzhou" name="specificSpots" value="湖州影视城">
+                            <label for="spotHuzhou">湖州影视城</label>
+                        </div>
+                        <div class="option">
+                            <input type="text" id="otherSpot" placeholder="其他想去的地方">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-hotel"></i> 住宿与餐饮</h2>
+                
+                <div class="question">
+                    <div class="question-text">住宿预算（每晚）？</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="budget1" name="accommodation" value="经济型 300元以下">
+                            <label for="budget1">经济型 300元以下</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="budget2" name="accommodation" value="舒适型 300-500元">
+                            <label for="budget2">舒适型 300-500元</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="budget3" name="accommodation" value="高品质 500-800元">
+                            <label for="budget3">高品质 500-800元</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="budget4" name="accommodation" value="豪华型 800元以上">
+                            <label for="budget4">豪华型 800元以上</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">住宿类型偏好？</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="hotelType1" name="hotelType" value="经济连锁酒店">
+                            <label for="hotelType1">经济连锁酒店</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="hotelType2" name="hotelType" value="精品民宿">
+                            <label for="hotelType2">精品民宿</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="hotelType3" name="hotelType" value="度假村/酒店">
+                            <label for="hotelType3">度假村/酒店</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="hotelType4" name="hotelType" value="农家乐">
+                            <label for="hotelType4">农家乐</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">餐饮偏好？(多选)</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="food1" name="foodPreference" value="当地特色菜">
+                            <label for="food1">当地特色菜</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="food2" name="foodPreference" value="精致餐厅">
+                            <label for="food2">精致餐厅</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="food3" name="foodPreference" value="平价大众">
+                            <label for="food3">平价大众</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="food4" name="foodPreference" value="小吃街">
+                            <label for="food4">小吃街</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="food5" name="foodPreference" value="自带/简餐">
+                            <label for="food5">自带/简餐</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">餐饮预算（人均/天）？</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="foodBudget1" name="foodBudget" value="100元以下">
+                            <label for="foodBudget1">100元以下</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="foodBudget2" name="foodBudget" value="100-200元">
+                            <label for="foodBudget2">100-200元</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="foodBudget3" name="foodBudget" value="200-300元">
+                            <label for="foodBudget3">200-300元</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="foodBudget4" name="foodBudget" value="300元以上">
+                            <label for="foodBudget4">300元以上</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-comments"></i> 其他需求</h2>
+                <div class="question">
+                    <div class="question-text">特殊需求或注意事项？</div>
+                    <textarea id="specialNeeds" placeholder="请输入您的特殊需求，如行动不便需要无障碍设施、过敏情况等"></textarea>
+                </div>
+            </div>
+
+            <button type="button" id="copyButton" class="copy-btn">生成并复制结果</button>
+            
+            <div class="result-area" id="resultArea">
+                <p id="resultText"></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButton = document.getElementById('copyButton');
+            const resultArea = document.getElementById('resultArea');
+            const resultText = document.getElementById('resultText');
+            
+            copyButton.addEventListener('click', function() {
+                let result = "【湖州旅行需求调查结果】\n";
+                
+                // 收集旅行日期
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                result += "旅行日期：" + startDate + " 至 " + endDate + "\n";
+                
+                // 收集人数
+                const peopleCount = document.querySelector('input[name="peopleCount"]:checked');
+                if (peopleCount) {
+                    result += "出行人数：" + peopleCount.value + "\n";
+                }
+                
+                // 收集团队成员构成
+                const memberComposition = document.querySelectorAll('input[name="memberComposition"]:checked');
+                if (memberComposition.length > 0) {
+                    result += "团队成员构成：";
+                    memberComposition.forEach((item, index) => {
+                        result += item.value;
+                        if (index < memberComposition.length - 1) {
+                            result += "、";
+                        }
+                    });
+                    result += "\n";
+                }
+                
+                // 收集交通方式
+                const transportation = document.querySelector('input[name="transportation"]:checked');
+                if (transportation) {
+                    result += "交通方式：" + transportation.value + "\n";
+                }
+                
+                // 收集旅行风格
+                const travelStyle = document.querySelectorAll('input[name="travelStyle"]:checked');
+                if (travelStyle.length > 0) {
+                    result += "旅行风格偏好：";
+                    travelStyle.forEach((item, index) => {
+                        result += item.value;
+                        if (index < travelStyle.length - 1) {
+                            result += "、";
+                        }
+                    });
+                    result += "\n";
+                }
+                
+                // 收集兴趣点
+                const interests = document.querySelectorAll('input[name="interests"]:checked');
+                if (interests.length > 0) {
+                    result += "感兴趣的景点/活动类型：";
+                    interests.forEach((item, index) => {
+                        result += item.value;
+                        if (index < interests.length - 1) {
+                            result += "、";
+                        }
+                    });
+                    result += "\n";
+                }
+                
+                // 收集特定景点
+                const specificSpots = document.querySelectorAll('input[name="specificSpots"]:checked');
+                const otherSpot = document.getElementById('otherSpot').value.trim();
+                
+                if (specificSpots.length > 0 || otherSpot) {
+                    result += "特别想去的湖州景点：";
+                    specificSpots.forEach((item, index) => {
+                        result += item.value;
+                        if (index < specificSpots.length - 1 || otherSpot) {
+                            result += "、";
+                        }
+                    });
+                    
+                    if (otherSpot) {
+                        result += otherSpot;
+                    }
+                    result += "\n";
+                }
+                
+                // 收集住宿预算
+                const accommodation = document.querySelector('input[name="accommodation"]:checked');
+                if (accommodation) {
+                    result += "住宿预算：" + accommodation.value + "\n";
+                }
+                
+                // 收集住宿类型
+                const hotelType = document.querySelector('input[name="hotelType"]:checked');
+                if (hotelType) {
+                    result += "住宿类型偏好：" + hotelType.value + "\n";
+                }
+                
+                // 收集餐饮偏好
+                const foodPreference = document.querySelectorAll('input[name="foodPreference"]:checked');
+                if (foodPreference.length > 0) {
+                    result += "餐饮偏好：";
+                    foodPreference.forEach((item, index) => {
+                        result += item.value;
+                        if (index < foodPreference.length - 1) {
+                            result += "、";
+                        }
+                    });
+                    result += "\n";
+                }
+                
+                // 收集餐饮预算
+                const foodBudget = document.querySelector('input[name="foodBudget"]:checked');
+                if (foodBudget) {
+                    result += "餐饮预算：" + foodBudget.value + "\n";
+                }
+                
+                // 收集特殊需求
+                const specialNeeds = document.getElementById('specialNeeds').value.trim();
+                if (specialNeeds) {
+                    result += "特殊需求或注意事项：" + specialNeeds + "\n";
+                }
+                
+                // 显示结果并复制到剪贴板
+                resultText.textContent = result;
+                resultArea.style.display = 'block';
+                
+                // 复制到剪贴板
+                navigator.clipboard.writeText(result).then(() => {
+                    alert('已复制到剪贴板！');
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制。');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

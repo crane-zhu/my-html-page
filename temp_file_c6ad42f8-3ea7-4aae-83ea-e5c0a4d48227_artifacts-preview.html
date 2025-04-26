@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五一杭州西湖轻松双人游 | 精心定制行程</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #43a047;
+            --accent-color: #ff9800;
+            --light-bg: #f5f9ff;
+            --dark-bg: #263238;
+            --text-color: #333;
+            --light-text: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9fbfd;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1527909637615-b0def78c5d37?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+            background-size: cover;
+            color: var(--light-text);
+            padding: 60px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .weather-summary {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+        
+        /* Section Styles */
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .day-card {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .day-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .day-title i {
+            margin-right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+        
+        .activity-list {
+            list-style-type: none;
+        }
+        
+        .activity-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .activity-list li::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--accent-color);
+            font-size: 18px;
+        }
+        
+        /* Itinerary Section */
+        .daily-itinerary {
+            margin-bottom: 40px;
+        }
+        
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .day-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .day-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .day-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-left: 20px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ddd;
+        }
+        
+        .time-block {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .time-block::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            left: -46px;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .time {
+            position: absolute;
+            left: -96px;
+            top: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .block-content {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.2s ease;
+        }
+        
+        .block-content:hover {
+            transform: translateX(5px);
+        }
+        
+        .block-title {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .block-title i {
+            color: var(--secondary-color);
+        }
+        
+        .block-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .block-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #f1f1f1;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        
+        .meta-item i {
+            color: var(--accent-color);
+        }
+        
+        /* Transportation Section */
+        .transport-card {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .transport-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .transport-details {
+            flex-grow: 1;
+        }
+        
+        .transport-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .transport-desc {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .transport-routes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .route-tag {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .transport-time {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Accommodation & Dining Section */
+        .accommodation-dining {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .accommodation-dining {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hotel-card, .restaurant-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .hotel-card:hover, .restaurant-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hotel-img-container, .restaurant-img-container {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .hotel-img, .restaurant-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hotel-card:hover .hotel-img, .restaurant-card:hover .restaurant-img {
+            transform: scale(1.05);
+        }
+        
+        .hotel-info, .restaurant-info {
+            padding: 20px;
+        }
+        
+        .hotel-name, .restaurant-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .hotel-address, .restaurant-address {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+        
+        .hotel-address i, .restaurant-address i {
+            margin-top: 4px;
+            color: var(--accent-color);
+        }
+        
+        .hotel-details, .restaurant-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+        
+        .hotel-price, .hotel-rating, .cuisine-tag, .price-range {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .hotel-price, .price-range {
+            background-color: #e8f5e9;
+            color: var(--secondary-color);
+        }
+        
+        .hotel-rating, .cuisine-tag {
+            background-color: #fff8e1;
+            color: var(--accent-color);
+        }
+        
+        .restaurant-specialty {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        /* Practical Info Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .info-card {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .info-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .info-content {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        
+        .emergency-list, .tips-list, .packing-list, .facilities-list {
+            list-style-type: none;
+            margin-left: 5px;
+        }
+        
+        .emergency-list li, .tips-list li, .packing-list li, .facilities-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .emergency-list li::before, .tips-list li::before, .packing-list li::before, .facilities-list li::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        
+        .emergency-list li::before {
+            content: '\f06a';
+        }
+        
+        .tips-list li::before {
+            content: '\f0eb';
+        }
+        
+        .packing-list li::before {
+            content: '\f07a';
+        }
+        
+        .facilities-list li::before {
+            content: '\f2e7';
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .budget-table th, .budget-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .budget-table th {
+            background-color: #f2f2f2;
+            color: #444;
+        }
+        
+        .budget-total {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* Accessibility Features */
+        .accessibility-info {
+            background-color: #fffde7;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .accessibility-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: #f57c00;
+            margin-bottom: 15px;
+        }
+        
+        .accessibility-list {
+            list-style-type: none;
+        }
+        
+        .accessibility-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .accessibility-list li::before {
+            content: '\f4fd';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #f57c00;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .heart {
+            color: #e91e63;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .timeline {
+                padding-left: 35px;
+            }
+            
+            .time {
+                left: -75px;
+                font-size: 0.8rem;
+            }
+            
+            .time-block::before {
+                left: -31px;
+            }
+            
+            .timeline::before {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 40px 15px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .timeline {
+                padding-left: 25px;
+            }
+            
+            .time {
+                position: relative;
+                left: auto;
+                top: auto;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            
+            .time-block::before {
+                left: -21px;
+            }
+            
+            .timeline::before {
+                left: 5px;
+            }
+            
+            .transport-card, .day-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">杭州西湖轻松休闲三日游</h1>
+            <p class="subtitle">五一假期特别行程 | 2024年5月1日-5月3日</p>
+            <div class="weather-summary">
+                <i class="fas fa-cloud-sun"></i> 五一期间天气预报：白天多云为主，局部小雨，气温12-26°C，建议携带雨具及轻薄外套
+            </div>
+        </div>
+        
+        <!-- Overview Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-map"></i> 行程概览</h2>
+            <div class="overview-grid">
+                <div class="day-card">
+                    <h3 class="day-title"><i class="fas fa-calendar-day"></i> 第一天 (5月1日)</h3>
+                    <ul class="activity-list">
+                        <li>抵达杭州，入住酒店</li>
+                        <li>午餐：品尝地道杭帮菜</li>
+                        <li>下午：游览断桥残雪与白堤</li>
+                        <li>傍晚：湖滨路休闲漫步</li>
+                        <li>晚餐：湖边精致餐厅用餐</li>
+                    </ul>
+                </div>
+                
+                <div class="day-card">
+                    <h3 class="day-title"><i class="fas fa-calendar-day"></i> 第二天 (5月2日)</h3>
+                    <ul class="activity-list">
+                        <li>上午：游船游览三潭印月</li>
+                        <li>午餐：知味观特色杭帮菜</li>
+                        <li>下午：参观雷峰塔（有电梯）</li>
+                        <li>晚上：观看西湖实景演出</li>
+                        <li>返回酒店，休息</li>
+                    </ul>
+                </div>
+                
+                <div class="day-card">
+                    <h3 class="day-title"><i class="fas fa-calendar-day"></i> 第三天 (5月3日)</h3>
+                    <ul class="activity-list">
+                        <li>上午：西湖博物馆参观</li>
+                        <li>午餐：楼外楼特色美食</li>
+                        <li>下午：苏堤春晓轻松游</li>
+                        <li>购买西湖龙井茶等纪念品</li>
+                        <li>返程</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="accessibility-info">
+                <h3 class="accessibility-title"><i class="fas fa-wheelchair"></i> 行动便利性安排</h3>
+                <ul class="accessibility-list">
+                    <li>全程考虑行动便利性，安排观光车、出租车及游船等交通工具减少步行</li>
+                    <li>精选有无障碍设施的景点和酒店，如雷峰塔设有电梯</li>
+                    <li>每天景点数量适中，留有充分休息时间</li>
+                    <li>酒店选择靠近西湖且交通便捷的地点</li>
+                    <li>全程配备详细的交通指南，确保轻松出行</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Detailed Itinerary -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-clock"></i> 详细行程安排</h2>
+            
+            <!-- Day 1 -->
+            <div class="daily-itinerary">
+                <div class="day-header">
+                    <div class="day-icon">1</div>
+                    <div class="day-info">
+                        <h3>第一天 | 5月1日（星期三）</h3>
+                        <p>初识西湖，轻松体验经典景点</p>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="time-block">
+                        <div class="time">上午</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-hotel"></i> 抵达杭州，入住酒店</h4>
+                            <p class="block-desc">抵达杭州后，乘坐出租车前往预订的西湖景区附近酒店。酒店位置优越，步行可达主要景点，便于您放置行李后轻松游览。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-map-marker-alt"></i> 西湖景区附近</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">12:00-13:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-utensils"></i> 午餐：品尝杭帮菜</h4>
+                            <p class="block-desc">在酒店附近的"一路吃·西湖杭帮菜"或"寄畅興·江南蟹黄面"等餐厅品尝正宗杭帮菜，如西湖醋鱼、龙井虾仁等特色菜品。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-money-bill-wave"></i> 约150-200元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">14:00-16:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-archway"></i> 游览断桥残雪与白堤</h4>
+                            <p class="block-desc">乘坐观光车前往断桥，这里是《白蛇传》中白娘子与许仙相会的地方，也是西湖最著名的景点之一。之后沿着白堤轻松漫步，欣赏湖光山色。白堤设有多处休息长椅，可随时歇息。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 免费</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约2.5小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 平坦道路，有休息设施</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">17:00-18:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-walking"></i> 湖滨路休闲漫步</h4>
+                            <p class="block-desc">沿着湖滨路漫步，这里是西湖东侧的景观大道，道路平坦，设有多处休息区。可以欣赏西湖傍晚的美景，远眺雷峰塔和宝石山的夕照，也可在湖边长椅上小憩。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 免费</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 适合轻松漫步</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">19:00-20:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-utensils"></i> 晚餐：湖边精致餐厅</h4>
+                            <p class="block-desc">在杭八鲜私房菜或寄畅興江南蟹黄面（西湖湖景店）享用晚餐，品尝更多杭州本地特色美食，欣赏西湖夜景。这些餐厅均提供舒适的就餐环境和优质服务。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-money-bill-wave"></i> 约150-200元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">20:30-21:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-moon"></i> 夜游西湖（可选）</h4>
+                            <p class="block-desc">如果体力允许，可以乘坐出租车前往西湖音乐喷泉欣赏夜景和喷泉表演，也可以直接返回酒店休息，为第二天的行程做准备。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 视体力情况选择</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2 -->
+            <div class="daily-itinerary">
+                <div class="day-header">
+                    <div class="day-icon">2</div>
+                    <div class="day-info">
+                        <h3>第二天 | 5月2日（星期四）</h3>
+                        <p>游船与历史文化体验，欣赏精彩演出</p>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="time-block">
+                        <div class="time">8:30-9:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-coffee"></i> 酒店早餐</h4>
+                            <p class="block-desc">在酒店享用丰盛早餐，为一天的行程做好准备。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">10:00-12:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-water"></i> 游船游览三潭印月</h4>
+                            <p class="block-desc">前往湖心亭码头，乘坐游船前往小瀛洲三潭印月岛。游船是欣赏西湖美景的轻松方式，无需步行即可领略湖光山色。岛上有精美的园林和亭台，是西湖十景之一。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 游船票约55元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约2小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 游船代替步行，减轻体力消耗</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">12:30-14:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-utensils"></i> 午餐：知味观</h4>
+                            <p class="block-desc">乘坐游船返回后，在知味观享用午餐，这是杭州最著名的老字号餐厅之一，提供正宗的杭帮菜，如西湖醋鱼、叫化童子鸡等特色菜品。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-money-bill-wave"></i> 约150-200元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">14:30-16:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-landmark"></i> 参观雷峰塔</h4>
+                            <p class="block-desc">乘坐出租车前往雷峰塔，这是西湖边的历史文化地标。塔内设有电梯，可以轻松登顶，欣赏西湖全景。塔内还有丰富的历史文物展示，讲述白蛇传等民间故事。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 门票约40元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约2小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 有电梯，便于上下</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">17:00-18:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-utensils"></i> 晚餐：西湖边特色餐厅</h4>
+                            <p class="block-desc">在雷峰塔附近的藕香居餐厅或隐湖上悦餐厅享用晚餐，品尝特色杭帮菜，为晚上的演出做准备。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-money-bill-wave"></i> 约150-200元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">19:30-21:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-theater-masks"></i> 观看西湖实景演出</h4>
+                            <p class="block-desc">乘坐出租车前往东坡大剧院观看"西湖东坡演出"或其他西湖特色演出。演出将为您展现西湖的历史文化和自然美景，座位舒适，是夜游西湖的绝佳方式。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 门票约200-300元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 有座位观看，轻松舒适</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">21:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-bed"></i> 返回酒店休息</h4>
+                            <p class="block-desc">演出结束后，乘坐出租车返回酒店休息。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约30分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3 -->
+            <div class="daily-itinerary">
+                <div class="day-header">
+                    <div class="day-icon">3</div>
+                    <div class="day-info">
+                        <h3>第三天 | 5月3日（星期五）</h3>
+                        <p>文化体验与悠闲告别</p>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="time-block">
+                        <div class="time">8:30-9:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-coffee"></i> 酒店早餐与退房</h4>
+                            <p class="block-desc">在酒店享用早餐，办理退房手续。可以将行李寄存在酒店，方便后续游览。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">10:00-12:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-university"></i> 西湖博物馆参观</h4>
+                            <p class="block-desc">乘坐出租车前往西湖博物馆，了解西湖的历史文化和自然风貌。博物馆内设施完善，展示了西湖从古至今的变迁历程和文化价值。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 免费</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约2小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 无障碍设施完善</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">12:30-14:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-utensils"></i> 午餐：楼外楼特色美食</h4>
+                            <p class="block-desc">在楼外楼享用午餐，这是杭州最有历史的餐厅之一，创建于1848年，品尝杭州特色菜品如西湖醋鱼、东坡肉等。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-money-bill-wave"></i> 约180-250元/人</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">14:30-16:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-tree"></i> 苏堤春晓轻松游</h4>
+                            <p class="block-desc">乘坐观光车前往苏堤，这是西湖十景之一"苏堤春晓"所在地。苏堤由北宋诗人苏东坡主持修建，长约2.8公里，两侧种满柳树和花草。可以选择游览其中一小段，欣赏西湖美景，拍照留念。苏堤设有多处观景亭可以休息。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-ticket-alt"></i> 免费</div>
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1.5小时</div>
+                                <div class="meta-item"><i class="fas fa-wheelchair"></i> 可根据体力情况灵活安排</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">16:30-17:30</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-shopping-bag"></i> 购买西湖龙井茶等纪念品</h4>
+                            <p class="block-desc">在西湖边的特产店或茶叶市场购买西湖龙井茶、丝绸制品等杭州特色纪念品带回家。</p>
+                            <div class="block-meta">
+                                <div class="meta-item"><i class="fas fa-clock"></i> 约1小时</div>
+                                <div class="meta-item"><i class="fas fa-shopping-bag"></i> 根据个人预算</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="time-block">
+                        <div class="time">18:00</div>
+                        <div class="block-content">
+                            <h4 class="block-title"><i class="fas fa-plane-departure"></i> 结束行程，返程</h4>
+                            <p class="block-desc">从酒店取回行李，结束愉快的杭州西湖之旅，返程回家。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Transportation -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-bus"></i> 交通信息</h2>
+            
+            <div class="transport-card">
+                <div class="transport-icon"><i class="fas fa-bus-alt"></i></div>
+                <div class="transport-details">
+                    <h3 class="transport-title">西湖景区观光车</h3>
+                    <p class="transport-desc">西湖景区设有环湖观光车线路，连接各主要景点，非常适合减少步行疲劳。观光车每15-20分钟一班，可以购买一日票无限次乘坐。</p>
+                    <div class="transport-routes">
+                        <span class="route-tag">西湖内环线</span>
+                        <span class="route-tag">西湖外环线</span>
+                        <span class="route-tag">断桥-雷峰塔线</span>
+                    </div>
+                    <p class="transport-time"><i class="fas fa-ticket-alt"></i> 单程票约3-5元，一日票约40元</p>
+                </div>
+            </div>
+            
+            <div class="transport-card">
+                <div class="transport-icon"><i class="fas fa-taxi"></i></div>
+                <div class="transport-details">
+                    <h3 class="transport-title">出租车/网约车</h3>
+                    <p class="transport-desc">杭州出租车和网约车非常便利，是连接各景点的舒适选择，特别适合需要考虑行动便利性的游客。可以通过滴滴出行等APP轻松叫车。</p>
+                    <p class="transport-time"><i class="fas fa-money-bill-wave"></i> 起步价约11元，一般景点间车费约20-40元</p>
+                </div>
+            </div>
+            
+            <div class="transport-card">
+                <div class="transport-icon"><i class="fas fa-ship"></i></div>
+                <div class="transport-details">
+                    <h3 class="transport-title">西湖游船</h3>
+                    <p class="transport-desc">西湖游船是欣赏西湖美景的绝佳方式，无需步行即可领略湖光山色，尤其适合有行动便利需求的游客。</p>
+                    <div class="transport-routes">
+                        <span class="route-tag">湖心亭→三潭印月</span>
+                        <span class="route-tag">花港观鱼→三潭印月</span>
+                        <span class="route-tag">环湖游</span>
+                    </div>
+                    <p class="transport-time"><i class="fas fa-ticket-alt"></i> 普通游船约55元/人，画舫船约140元/人</p>
+                </div>
+            </div>
+            
+            <div class="transport-card">
+                <div class="transport-icon"><i class="fas fa-bus"></i></div>
+                <div class="transport-details">
+                    <h3 class="transport-title">杭州公交车</h3>
+                    <p class="transport-desc">杭州公交网络发达，有多条线路经过西湖景区，票价便宜，但五一期间可能较为拥挤。</p>
+                    <div class="transport-routes">
+                        <span class="route-tag">Y9路 (西湖景区专线)</span>
+                        <span class="route-tag">K4路 (环湖线)</span>
+                        <span class="route-tag">87路 (满觉陇-翁家山线)</span>
+                        <span class="route-tag">游2/游3/游4/游5路 (旅游专线)</span>
+                    </div>
+                    <p class="transport-time"><i class="fas fa-ticket-alt"></i> 票价约2-5元，可使用支付宝或微信支付</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Accommodation & Dining -->
+        <div class="accommodation-dining">
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-bed"></i> 住宿推荐</h2>
+                
+                <div class="hotel-card">
+                    <div class="hotel-img-container">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="杭州湖畔酒店" class="hotel-img">
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name">杭州湖滨精品酒店</h3>
+                        <p class="hotel-address"><i class="fas fa-map-marker-alt"></i> 杭州市上城区湖滨路附近</p>
+                        <p class="hotel-description">位于湖滨商圈，靠近西湖和购物区域。酒店设施齐全，有电梯和无障碍设施，周边交通便利，适合有行动便利需求的游客。</p>
+                        <div class="hotel-details">
+                            <span class="hotel-price"><i class="fas fa-tag"></i> 650-800元/晚</span>
+                            <span class="hotel-rating"><i class="fas fa-star"></i> 4.5分</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hotel-card">
+                    <div class="hotel-img-container">
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="西湖名景酒店" class="hotel-img">
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name">杭州西湖名景酒店</h3>
+                        <p class="hotel-address"><i class="fas fa-map-marker-alt"></i> 杭州市西湖区南山路附近</p>
+                        <p class="hotel-description">位于西湖景区边缘，步行可达断桥和白堤。酒店环境安静，配备电梯和无障碍通道，房间宽敞舒适。</p>
+                        <div class="hotel-details">
+                            <span class="hotel-price"><i class="fas fa-tag"></i> 500-700元/晚</span>
+                            <span class="hotel-rating"><i class="fas fa-star"></i> 4.3分</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title"><i class="fas fa-info-circle"></i> 酒店便利设施</h3>
+                    <ul class="facilities-list">
+                        <li>推荐酒店均设有电梯和无障碍通道</li>
+                        <li>提供24小时前台服务和行李寄存</li>
+                        <li>房间配备独立卫浴和免费WiFi</li>
+                        <li>酒店可协助预订出租车和景点门票</li>
+                        <li>酒店周边200米内有便利店和药店</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> 餐饮推荐</h2>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-img-container">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80" alt="楼外楼" class="restaurant-img">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">楼外楼 <span class="cuisine-tag">杭帮菜</span></h3>
+                        <p class="restaurant-address"><i class="fas fa-map-marker-alt"></i> 杭州市上城区孤山路30号</p>
+                        <p class="restaurant-description">创建于1848年的杭州老字号，环境优雅，位于西湖边，提供正宗的杭帮菜。</p>
+                        <p class="restaurant-specialty">特色菜：西湖醋鱼、东坡肉、龙井虾仁、宋嫂鱼羹</p>
+                        <div class="restaurant-details">
+                            <span class="price-range"><i class="fas fa-money-bill-wave"></i> 人均180-250元</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-img-container">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80" alt="知味观" class="restaurant-img">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">知味观 <span class="cuisine-tag">杭帮菜</span></h3>
+                        <p class="restaurant-address"><i class="fas fa-map-marker-alt"></i> 杭州市上城区河坊街92号</p>
+                        <p class="restaurant-description">创建于1913年的杭州老字号，以杭州传统小吃和杭帮菜为特色。</p>
+                        <p class="restaurant-specialty">特色菜：叫花童子鸡、西湖莼菜汤、龙井虾仁、糯米藕</p>
+                        <div class="restaurant-details">
+                            <span class="price-range"><i class="fas fa-money-bill-wave"></i> 人均120-180元</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-card">
+                    <div class="restaurant-img-container">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80" alt="寄畅興" class="restaurant-img">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">寄畅興·江南蟹黄面·杭帮菜 <span class="cuisine-tag">网红打卡</span></h3>
+                        <p class="restaurant-address"><i class="fas fa-map-marker-alt"></i> 杭州市南山路147号</p>
+                        <p class="restaurant-description">现代风格的杭帮菜餐厅，环境精致，融合传统与创新的美食。</p>
+                        <p class="restaurant-specialty">特色菜：蟹黄面、油爆虾、西湖醋鱼、桂花糖藕</p>
+                        <div class="restaurant-details">
+                            <span class="price-range"><i class="fas fa-money-bill-wave"></i> 人均150-200元</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Practical Info -->
+        <section class="section practical-info">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> 实用信息</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 class="info-title"><i class="fas fa-phone-alt"></i> 紧急联系信息</h3>
+                    <ul class="emergency-list">
+                        <li>紧急救援：120</li>
+                        <li>报警电话：110</li>
+                        <li>消防电话：119</li>
+                        <li>杭州旅游投诉热线：0571-12301</li>
+                        <li>西湖景区管理处：0571-87179617</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title"><i class="fas fa-lightbulb"></i> 旅行小贴士</h3>
+                    <ul class="tips-list">
+                        <li>五一期间西湖景区游客较多，建议错峰出行，上午9点前或下午4点后人流较少</li>
+                        <li>景区内多设有休息区和座椅，可随时休息</li>
+                        <li>根据天气预报，五一期间杭州可能有小雨，请随身携带雨具</li>
+                        <li>建议提前预订西湖实景演出门票，避免售罄</li>
+                        <li>携带充足的饮用水和一些零食，保持体力</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title"><i class="fas fa-hand-holding-usd"></i> 预算摘要</h3>
+                    <table class="budget-table">
+                        <tr>
+                            <th>项目</th>
+                            <th>预计费用（双人）</th>
+                        </tr>
+                        <tr>
+                            <td>住宿（2晚）</td>
+                            <td>1000-1600元</td>
+                        </tr>
+                        <tr>
+                            <td>餐饮（6餐）</td>
+                            <td>1500-2000元</td>
+                        </tr>
+                        <tr>
+                            <td>景点门票</td>
+                            <td>约600元</td>
+                        </tr>
+                        <tr>
+                            <td>交通（出租车/观光车/游船）</td>
+                            <td>约500元</td>
+                        </tr>
+                        <tr>
+                            <td>购物/纪念品</td>
+                            <td>500-1000元（视个人情况）</td>
+                        </tr>
+                        <tr class="budget-total">
+                            <td>总计（双人）</td>
+                            <td>约4100-5700元</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-title"><i class="fas fa-suitcase"></i> 行李清单</h3>
+                    <ul class="packing-list">
+                        <li>舒适的防滑平底鞋（建议带两双，以便交替）</li>
+                        <li>轻便外套（5月初早晚温差大）</li>
+                        <li>便携式雨伞或雨衣（天气预报显示可能有小雨）</li>
+                        <li>太阳镜、防晒霜、帽子（防晒用品）</li>
+                        <li>常用药品（如止痛药、肠胃药、创可贴等）</li>
+                        <li>相机/手机及充电器（备用充电宝）</li>
+                        <li>身份证及其他证件（包括医保卡等）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>杭州西湖轻松休闲三日游 | 专为您定制的五一假期行程</p>
+            <p>祝您旅途愉快！</p>
+        </div>
+    </div>
+</body>
+</html>

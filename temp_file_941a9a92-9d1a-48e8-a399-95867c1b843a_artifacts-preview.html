@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州西湖旅行需求调查</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1890ff;
+            --background-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .weather-info {
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .weather-info h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .weather-info h3 i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        
+        .weather-info p {
+            margin: 4px 0;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 16px;
+        }
+        
+        .card h2 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2 i {
+            margin-right: 10px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        .question h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .option input {
+            margin-right: 8px;
+        }
+        
+        .copy-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .copy-btn:hover {
+            background-color: #0f7ae5;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-right: 12px;
+            min-width: 80px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #f6ffed;
+            border: 1px solid #b7eb8f;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-map-marked-alt"></i> 杭州西湖五一旅行规划</h1>
+        <p>双人行程个性化定制</p>
+    </div>
+    
+    <div class="weather-info">
+        <h3><i class="fas fa-cloud-sun"></i> 杭州五一期间天气预报</h3>
+        <p>4月25日(周五): 多云，12-22℃</p>
+        <p>4月26日(周六): 多云转小雨，16-26℃</p>
+        <p>4月27日(周日): 小雨，16-23℃</p>
+        <p>4月28日(周一): 晴，16-25℃</p>
+        <p><i class="fas fa-exclamation-circle"></i> 建议携带雨具，准备防晒用品</p>
+    </div>
+    
+    <form id="travelForm">
+        <div class="card">
+            <h2><i class="fas fa-users"></i> 人员情况</h2>
+            <div class="question">
+                <h3>1. 您的年龄段是？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="age" value="18-25岁"> 18-25岁</label>
+                    <label class="option"><input type="radio" name="age" value="26-35岁"> 26-35岁</label>
+                    <label class="option"><input type="radio" name="age" value="36-45岁"> 36-45岁</label>
+                    <label class="option"><input type="radio" name="age" value="46-60岁"> 46-60岁</label>
+                    <label class="option"><input type="radio" name="age" value="60岁以上"> 60岁以上</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>2. 是否有特殊人群？</h3>
+                <div class="options checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="specialNeeds" value="老人"> 老人</label>
+                    <label class="checkbox-item"><input type="checkbox" name="specialNeeds" value="小孩"> 小孩</label>
+                    <label class="checkbox-item"><input type="checkbox" name="specialNeeds" value="孕妇"> 孕妇</label>
+                    <label class="checkbox-item"><input type="checkbox" name="specialNeeds" value="行动不便"> 行动不便</label>
+                    <label class="checkbox-item"><input type="checkbox" name="specialNeeds" value="无"> 无</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-heart"></i> 旅游偏好</h2>
+            <div class="question">
+                <h3>3. 您的旅行风格是？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="travelStyle" value="休闲放松型"> 休闲放松型（悠闲游览，不赶行程）</label>
+                    <label class="option"><input type="radio" name="travelStyle" value="观光打卡型"> 观光打卡型（覆盖热门景点）</label>
+                    <label class="option"><input type="radio" name="travelStyle" value="深度体验型"> 深度体验型（了解历史文化）</label>
+                    <label class="option"><input type="radio" name="travelStyle" value="摄影游览型"> 摄影游览型（拍美景美照为主）</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>4. 您最感兴趣的西湖景点类型？</h3>
+                <div class="options checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="十景"> 西湖十景</label>
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="寺庙"> 寺庙古刹</label>
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="博物馆"> 博物馆</label>
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="园林"> 园林景观</label>
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="自然风光"> 自然风光</label>
+                    <label class="checkbox-item"><input type="checkbox" name="interestPoints" value="历史街区"> 历史街区</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>5. 您期望的游览节奏？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="pace" value="轻松"> 轻松（每天游览2-3个景点）</label>
+                    <label class="option"><input type="radio" name="pace" value="适中"> 适中（每天游览4-5个景点）</label>
+                    <label class="option"><input type="radio" name="pace" value="紧凑"> 紧凑（每天游览6个以上景点）</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>6. 您对特别活动有兴趣吗？</h3>
+                <div class="options checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="activities" value="游船"> 西湖游船</label>
+                    <label class="checkbox-item"><input type="checkbox" name="activities" value="茶文化体验"> 茶文化体验</label>
+                    <label class="checkbox-item"><input type="checkbox" name="activities" value="夜景观赏"> 夜景观赏</label>
+                    <label class="checkbox-item"><input type="checkbox" name="activities" value="印象西湖表演"> 印象西湖表演</label>
+                    <label class="checkbox-item"><input type="checkbox" name="activities" value="自行车环湖"> 自行车环湖</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-bed"></i> 住宿与交通</h2>
+            <div class="question">
+                <h3>7. 您期望的住宿区域？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="accommodation_area" value="西湖周边"> 西湖周边（便于游览，价格较高）</label>
+                    <label class="option"><input type="radio" name="accommodation_area" value="武林商圈"> 武林商圈（购物便利，交通方便）</label>
+                    <label class="option"><input type="radio" name="accommodation_area" value="火车站附近"> 火车站附近（交通便利）</label>
+                    <label class="option"><input type="radio" name="accommodation_area" value="其他区域"> 其他区域</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>8. 住宿预算（每晚）？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="accommodation_budget" value="300元以下"> 300元以下</label>
+                    <label class="option"><input type="radio" name="accommodation_budget" value="300-500元"> 300-500元</label>
+                    <label class="option"><input type="radio" name="accommodation_budget" value="500-800元"> 500-800元</label>
+                    <label class="option"><input type="radio" name="accommodation_budget" value="800-1200元"> 800-1200元</label>
+                    <label class="option"><input type="radio" name="accommodation_budget" value="1200元以上"> 1200元以上</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>9. 您计划如何在杭州出行？</h3>
+                <div class="options checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="公交"> 公交</label>
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="地铁"> 地铁</label>
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="出租车"> 出租车</label>
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="网约车"> 网约车</label>
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="步行"> 步行</label>
+                    <label class="checkbox-item"><input type="checkbox" name="transportation" value="共享单车"> 共享单车</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-utensils"></i> 美食偏好</h2>
+            <div class="question">
+                <h3>10. 您对杭帮菜感兴趣吗？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="localCuisine" value="非常感兴趣"> 非常感兴趣（以品尝杭州特色菜为主）</label>
+                    <label class="option"><input type="radio" name="localCuisine" value="比较感兴趣"> 比较感兴趣（尝试部分特色菜）</label>
+                    <label class="option"><input type="radio" name="localCuisine" value="一般"> 一般（偶尔尝试）</label>
+                    <label class="option"><input type="radio" name="localCuisine" value="不太感兴趣"> 不太感兴趣（偏好其他菜系）</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>11. 您感兴趣的杭州美食有？</h3>
+                <div class="options checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="西湖醋鱼"> 西湖醋鱼</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="龙井虾仁"> 龙井虾仁</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="东坡肉"> 东坡肉</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="叫花鸡"> 叫花鸡</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="宋嫂鱼羹"> 宋嫂鱼羹</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="小笼包"> 小笼包</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="糕点茶点"> 糕点茶点</label>
+                    <label class="checkbox-item"><input type="checkbox" name="food" value="其他"> 其他</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>12. 单餐预算（人均）？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="food_budget" value="50元以下"> 50元以下</label>
+                    <label class="option"><input type="radio" name="food_budget" value="50-100元"> 50-100元</label>
+                    <label class="option"><input type="radio" name="food_budget" value="100-200元"> 100-200元</label>
+                    <label class="option"><input type="radio" name="food_budget" value="200元以上"> 200元以上</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-calendar-alt"></i> 行程时间</h2>
+            <div class="question">
+                <h3>13. 您计划的五一旅行具体日期是？</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="travelDates" value="4月29日-5月1日"> 4月29日-5月1日（3天）</label>
+                    <label class="option"><input type="radio" name="travelDates" value="4月30日-5月2日"> 4月30日-5月2日（3天）</label>
+                    <label class="option"><input type="radio" name="travelDates" value="5月1日-5月3日"> 5月1日-5月3日（3天）</label>
+                    <label class="option"><input type="radio" name="travelDates" value="4月28日-5月2日"> 4月28日-5月2日（5天）</label>
+                    <label class="option"><input type="radio" name="travelDates" value="其他"> 其他</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3>14. 其他特殊要求或备注：</h3>
+                <textarea name="specialRequirements" placeholder="请输入您的其他要求或参考信息..."></textarea>
+            </div>
+        </div>
+        
+        <button id="copyBtn" class="copy-btn" type="button"><i class="fas fa-copy"></i> 复制所有回答到剪贴板</button>
+        <div id="successMessage" class="success-message">已成功复制到剪贴板！</div>
+    </form>
+    
+    <script>
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            // 创建一个结果对象
+            let results = "【杭州西湖五一旅行需求问卷回答】\n\n";
+            const form = document.getElementById('travelForm');
+            
+            // 收集所有单选按钮的值
+            const radioInputs = form.querySelectorAll('input[type="radio"]:checked');
+            radioInputs.forEach(input => {
+                const questionText = input.closest('.question').querySelector('h3').textContent;
+                results += questionText + " " + input.value + "\n";
+            });
+            
+            // 收集所有多选框的值
+            const checkboxQuestions = form.querySelectorAll('.question:has(input[type="checkbox"])');
+            checkboxQuestions.forEach(question => {
+                const questionText = question.querySelector('h3').textContent;
+                const checkedBoxes = question.querySelectorAll('input[type="checkbox"]:checked');
+                let values = [];
+                checkedBoxes.forEach(box => {
+                    values.push(box.value);
+                });
+                if (values.length > 0) {
+                    results += questionText + " " + values.join(', ') + "\n";
+                }
+            });
+            
+            // 收集文本区域的值
+            const textareas = form.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                const questionText = textarea.closest('.question').querySelector('h3').textContent;
+                if (textarea.value.trim() !== '') {
+                    results += questionText + " " + textarea.value + "\n";
+                }
+            });
+            
+            // 复制到剪贴板
+            navigator.clipboard.writeText(results).then(
+                function() {
+                    const successMsg = document.getElementById('successMessage');
+                    successMsg.style.display = 'block';
+                    setTimeout(function() {
+                        successMsg.style.display = 'none';
+                    }, 3000);
+                }
+            );
+        });
+    </script>
+</body>
+</html>
